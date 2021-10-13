@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\QueryException;
 
 class Handler extends ExceptionHandler
 {
@@ -30,8 +31,11 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
+	
     public function register()
     {
-        //
+		$this->renderable(function (QueryException $e, $request) {
+			return response()->json(['error' => 'Not Available. Cannot Connect to Database.']);
+		});
     }
 }

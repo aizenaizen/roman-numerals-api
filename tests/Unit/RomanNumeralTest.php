@@ -3,7 +3,8 @@
 namespace Tests\Unit;
 
 use App\Services\RomanNumeralConverter;
-use PHPUnit\Framework\TestCase;
+// use PHPUnit\Framework\TestCase; // Script cannot communicate with DB using this, used 'use Tests\TestCase;' instead.
+use Tests\TestCase;
 
 class RomanNumeralTest extends TestCase
 {
@@ -34,7 +35,7 @@ class RomanNumeralTest extends TestCase
             'CM' => 900,
             'M' => 1000,
         ];
-
+		
         foreach ($toTest as $returnValue => $integer) {
             $this->assertEquals($returnValue, $this->converter->convertInteger($integer));
         }
